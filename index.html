@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta name="description" content="Développeur web freelance et expert Symfony. Création et refonte de sites vitrines, boutiques en ligne et plateformes sur mesure.">
+<link rel="canonical" href="https://laurentbrieu.github.io/">
+<link rel="alternate" hreflang="fr" href="https://laurentbrieu.github.io/">
+<link rel="alternate" hreflang="en" href="https://laurentbrieu.github.io/en/">
+
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LAURENT BRIEU — Développeur Web Freelance</title>
+<!-- Google Fonts: Space Grotesk & Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['"Space Grotesk"', 'sans-serif'],
+            grotesk: ['"Space Grotesk"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              black: '#0A0A0A',
+              light: '#F8F9FA',
+              border: '#E8ECEF',
+              muted: '#71717A',
+            }
+          },
+          letterSpacing: {
+            tighter: '-0.05em',
+            tightest: '-0.075em',
+          }
+        }
+      }
+    }
+  </script>
+<!-- Custom Typography & Layout CSS -->
+<style data-purpose="typography">
+    .font-grotesk {
+      font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    .headline-giant {
+      font-size: clamp(3.5rem, 11vw, 11.5rem);
+      line-height: 0.88;
+      letter-spacing: -0.06em;
+    }
+  </style>
+<!-- Custom Animations and Micro-interactions -->
+<style data-purpose="animations">
+    @keyframes pulse-slow {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.92); }
+    }
+    .animate-status-pulse {
+      animation: pulse-slow 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-marquee {
+      display: flex;
+      width: max-content;
+      animation: marquee 30s linear infinite;
+    }
+    .animate-marquee:hover {
+      animation-play-state: paused;
+    }
+  </style>
+<style data-purpose="responsive-layout">
+/* Responsive refinements: keep intrinsic content readable at every width. */
+html { scroll-padding-top: 6rem; }
+body { min-width: 0; }
+img, svg { max-width: 100%; }
+main .grid > *, header .flex > *, article .flex > * { min-width: 0; }
+a, button { touch-action: manipulation; }
+a:focus-visible, button:focus-visible { outline: 2px solid #059669; outline-offset: 5px; }
+.mobile-menu-toggle { display: none; }
+[data-purpose="hero-section"] > div > .absolute > span {
+  font-size: clamp(2rem, 12vw, 11.8rem);
+}
+[data-purpose="portfolio-work-showcase"] article > div:first-child {
+  aspect-ratio: auto;
+  min-height: 330px;
+  padding: clamp(16px, 2.2vw, 32px);
+}
+[data-purpose="portfolio-work-showcase"] article > div:first-child > div {
+  min-height: 266px;
+  height: auto;
+  gap: 12px;
+}
+[data-purpose="portfolio-work-showcase"] article .justify-between {
+  flex-wrap: wrap;
+  gap: 8px 12px;
+}
+[data-purpose="portfolio-work-showcase"] article .h-14,
+[data-purpose="portfolio-work-showcase"] article .h-12 {
+  height: auto;
+  min-height: 48px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+[data-purpose="portfolio-work-showcase"] article > .mt-5 {
+  flex-wrap: nowrap;
+}
+[data-purpose="services-capabilities"] .group > .flex {
+  flex-direction: column;
+  align-items: flex-start;
+}
+[data-purpose="services-capabilities"] .group > .flex > span {
+  flex-shrink: 1;
+  overflow-wrap: anywhere;
+}
+[data-purpose="contact-and-collab"] .mt-24 {
+  flex-wrap: wrap;
+}
+[data-purpose="contact-and-collab"] .mt-24 > div:first-child {
+  flex: 1 1 340px;
+}
+[data-purpose="contact-and-collab"] .mt-24 > div:last-child {
+  flex: 0 1 auto;
+}
+@media (max-width: 1279px) {
+  [data-purpose="site-header"] > div { height: 72px; gap: 16px; }
+  [data-purpose="desktop-nav"] { display: none; }
+  .mobile-menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 44px;
+    padding: 8px 15px;
+    margin-left: auto;
+    border: 1px solid #e5e5e5;
+    border-radius: 999px;
+    background: white;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  [data-purpose="desktop-nav"].is-open {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    left: 0;
+    right: 0;
+    top: 100%;
+    max-height: calc(100svh - 72px);
+    overflow-y: auto;
+    padding: 12px 24px 20px;
+    background: white;
+    border-bottom: 1px solid #e5e5e5;
+    box-shadow: 0 18px 24px #0000000a;
+  }
+  [data-purpose="desktop-nav"].is-open a {
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+    padding: 8px 12px;
+  }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  [data-purpose="hero-section"] > div > .grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    padding-top: 90px;
+    min-height: 0;
+  }
+  [data-purpose="hero-section"] .grid > div:first-child { order: 1; }
+  [data-purpose="hero-section"] .grid > div:nth-child(2) { order: 2; }
+  [data-purpose="hero-section"] .grid > div:last-child {
+    grid-column: 1 / -1;
+    order: 3;
+  }
+}
+@media (max-width: 1023px) {
+  [data-purpose="status-bar"] > div { gap: 8px 20px; }
+  [data-purpose="status-bar"] > div > div:last-child { flex-wrap: wrap; }
+  [data-purpose="hero-section"] { padding-top: 24px; padding-bottom: 40px; }
+  [data-purpose="hero-section"] > div { padding-bottom: 0; }
+  [data-purpose="hero-section"] .grid > div:last-child {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+  }
+  [data-purpose="hero-section"] .grid > div:last-child > a {
+    width: auto;
+    min-height: 44px;
+    margin: 0;
+  }
+  [data-purpose="hero-section"] .grid > div:first-child p { max-width: none; }
+  [data-purpose="portfolio-work-showcase"] article > .mt-5 {
+    flex-direction: column;
+  }
+  [data-purpose="portfolio-work-showcase"] article > .mt-5 > span { margin-left: 0; }
+  [data-purpose="portfolio-work-showcase"] .pb-12 { gap: 24px; }
+  [data-purpose="portfolio-work-showcase"] .pb-12 > * { flex: 1; min-width: 0; }
+}
+@media (max-width: 767px) {
+  [data-purpose="site-header"] [data-purpose="cta-button"] { display: none; }
+  [data-purpose="site-header"] > div > div:last-child { display: none; }
+  [data-purpose="hero-section"] > div > .grid {
+    min-height: 0;
+    gap: 26px;
+    padding-top: 48px;
+  }
+  [data-purpose="hero-section"] .grid > div:nth-child(2) > div {
+    width: min(100%, 340px);
+  }
+  [data-purpose="hero-section"] .grid > div:first-child h2 {
+    font-size: clamp(1.75rem, 6.4vw, 2.5rem);
+  }
+  [data-purpose="hero-section"] .grid > div:first-child p {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  [data-purpose="hero-section"] .grid > div:last-child { gap: 10px; }
+  [data-purpose="hero-section"] .grid > div:last-child > a {
+    flex: 1 1 calc(50% - 10px);
+    font-size: 13px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  main section:not([data-purpose="hero-section"]) { padding-top: 56px; padding-bottom: 56px; }
+  main section > div { padding-left: 20px; padding-right: 20px; }
+  #about > div > .grid, #services > div > .grid { gap: 32px; }
+  #work .mt-12 { margin-top: 28px; }
+  #work .pb-12, #experience .pb-12 { padding-bottom: 28px; }
+  #work article h3 { font-size: 20px; line-height: 1.35; }
+  #work article > .mt-5 p { font-size: 13px; line-height: 1.65; }
+  #services .group { padding: 22px; }
+  #contact .mt-24 { margin-top: 56px; text-align: center; }
+  #contact .mt-24 > div:first-child { flex: 0 1 auto; }
+  #contact .mt-24 .flex { flex-wrap: wrap; justify-content: center; gap: 12px 24px; }
+  #contact .mt-24 a { display: inline-flex; align-items: center; min-height: 44px; }
+  #contact .pt-6 a { padding: 14px 18px; min-height: 48px; }
+  #contact .pt-6 svg { flex-shrink: 0; }
+  #contact .inline-flex.tracking-widest { letter-spacing: .04em; font-size: 10px; }
+}
+@media (max-width: 389px) {
+  [data-purpose="site-header"] > div { padding-left: 16px; padding-right: 16px; gap: 8px; }
+  [data-purpose="site-header"] .group > div:last-child > span:first-child { font-size: 14px; }
+  [data-purpose="site-header"] .group > div:last-child > span:last-child { font-size: 9px; }
+  [data-purpose="site-header"] .group { gap: 8px; }
+  .mobile-menu-toggle { padding: 8px 10px; gap: 6px; }
+  [data-purpose="status-bar"] { padding-left: 16px; padding-right: 16px; font-size: 11px; }
+  [data-purpose="status-bar"] > div > div:last-child { gap: 8px; font-size: 10px; }
+  [data-purpose="hero-section"] > div { padding-left: 16px; padding-right: 16px; }
+  [data-purpose="portfolio-work-showcase"] article > div:first-child { padding: 12px; }
+  [data-purpose="portfolio-work-showcase"] article > div:first-child > div { padding: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  [data-purpose="metrics-ticker"] { overflow-x: auto; }
+}
+</style>
+<style data-purpose="reference-hero">
+/* Hero matching the supplied composition. Scoped independently of the older utility grid. */
+.reference-header{position:relative;z-index:40;background:#fff;border:0;font-family:Inter,Arial,sans-serif}
+.reference-header .reference-nav{max-width:1440px;margin:auto;padding:0 4.3%;height:110px;display:flex;align-items:center;gap:32px}
+.reference-header .availability{display:inline-flex;align-items:center;gap:9px;white-space:nowrap;border:1px solid #e9e9e9;border-radius:999px;padding:10px 13px;font-size:12px;line-height:1.2;box-shadow:0 5px 12px #00000008}
+.availability>span{width:8px;height:8px;background:#13cb66;border-radius:50%;flex-shrink:0}
+.reference-header [data-purpose="desktop-nav"]{display:flex;align-items:center;justify-content:space-evenly;gap:24px;flex:1;font-size:13px;color:#111}
+.reference-header nav a{display:inline-flex;align-items:center;min-height:44px}
+.reference-header .mobile-menu-toggle{display:none}
+.hero-cta{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:12px 19px;min-height:44px;border-radius:999px;background:#101010;color:white;font-size:14px;font-weight:500;line-height:1.25;box-shadow:0 3px 6px #0002;transition:transform .2s,background .2s}
+.hero-cta svg,.hero-pill svg,.mobile-menu-toggle svg{width:17px;height:17px;flex:none}
+.hero-cta:hover{background:#303030;transform:translateY(-2px)}
+.hero-cta:active,.hero-pill:active{transform:translateY(1px)}
+.reference-hero[data-purpose="hero-section"]{padding:0;background:white;border-bottom:1px solid #d9d9d9;overflow:hidden}
+.reference-hero .hero-stage{position:relative;max-width:1440px;margin:auto;height:clamp(455px,55.3vw,796px);padding:0 4.3%;isolation:isolate}
+.hero-name{position:absolute;top:7.5%;left:4.3%;right:4.3%;margin:0;display:flex;justify-content:space-between;gap:2%;font-family:Arial,Helvetica,sans-serif;font-size:clamp(60px,11.45vw,165px);font-weight:700;line-height:1;letter-spacing:-.045em;white-space:nowrap;z-index:0}
+.hero-name>span{color:transparent;-webkit-text-stroke:2px #111}.hero-name strong{font-weight:800;color:#111}
+.hero-portrait{position:absolute;bottom:0;left:24.8%;width:52.4%;aspect-ratio:79/58;overflow:hidden;z-index:1;}
+.hero-portrait img{display:block;width:100%;height:100%;object-fit:contain;object-position:center bottom}
+.hero-copy{position:absolute;left:6.8%;bottom:12.5%;z-index:2;width:28%;font-family:Inter,Arial,sans-serif}
+.hero-copy h2{font-size:clamp(23px,2.6vw,37px);font-weight:700;letter-spacing:-.045em;line-height:1.03;margin:0 0 18px}
+.hero-copy p{font-size:clamp(13px,1.42vw,20px);line-height:1.4;letter-spacing:-.025em;margin:0 0 18px}
+.hero-links{position:absolute;right:5%;bottom:11%;display:flex;flex-direction:column;align-items:flex-start;gap:14px;z-index:2}
+.hero-pill{display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:9px 15px;border:1px solid #e5e5e5;border-radius:999px;background:#ffffffed;font-size:15px;color:#111;transition:transform .2s,background .2s}
+.hero-pill:hover{background:#f4f4f4;transform:translateY(-2px)}
+@media(min-width:1440px){.reference-header .reference-nav{padding:0 62px}.hero-name{font-size:165px}}
+@media(max-width:1100px){.reference-header .reference-nav{height:90px;gap:18px}.reference-header [data-purpose="desktop-nav"]{gap:14px;font-size:12px}.reference-header .availability{font-size:10px}.hero-copy{left:5%;width:30%}.hero-cta{font-size:12px;padding:10px 14px}.hero-pill{font-size:13px;padding:8px 12px}.hero-links{gap:10px;right:4.3%}}
+@media(max-width:767px){
+.reference-header .reference-nav{height:80px;padding:0 20px;gap:10px}.reference-header .availability{font-size:10px;padding:10px}.reference-header .nav-cta{display:none}.reference-header .mobile-menu-toggle{display:inline-flex;margin-left:auto;min-height:44px}
+.reference-header [data-purpose="desktop-nav"]{display:none}.reference-header [data-purpose="desktop-nav"].is-open{display:flex;position:absolute;top:100%;left:0;right:0;padding:16px 20px;flex-direction:column;align-items:stretch;gap:0;background:white;border-bottom:1px solid #ddd;box-shadow:0 12px 20px #0001}
+.reference-hero .hero-stage{height:auto;min-height:0;display:flex;flex-direction:column;padding:20px 20px 0;overflow:hidden}
+.hero-name{position:relative;inset:auto;font-size:11.5vw;gap:8px;letter-spacing:-.055em;width:100%;order:0}.hero-name>span{-webkit-text-stroke:1.2px #111}
+.hero-copy{position:relative;inset:auto;width:100%;margin-top:32px;order:1}.hero-copy h2{font-size:30px;line-height:1.05;margin-bottom:14px}.hero-copy p{font-size:15px;max-width:330px;margin-bottom:18px}.hero-copy .hero-cta{font-size:14px;min-height:46px}
+.hero-links{position:relative;inset:auto;order:2;flex-direction:row;flex-wrap:wrap;gap:8px;margin-top:24px}.hero-pill{font-size:12px;gap:6px;padding:8px 10px;min-height:44px}.hero-pill svg{width:14px;height:14px}
+.hero-portrait{position:relative;inset:auto;order:3;width:min(100%,440px);margin:24px auto 0;flex-shrink:0}
+}
+@media(prefers-reduced-motion:no-preference){.hero-name,.hero-copy,.hero-links{animation:hero-enter .65s ease-out both}.hero-copy,.hero-links{animation-delay:.1s}@keyframes hero-enter{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}}
+</style>
+<style data-purpose="career-layout">
+.career-list{list-style:none;padding:0;margin:0}.career-row{display:grid;grid-template-columns:minmax(150px,2.5fr) minmax(0,4.5fr) minmax(0,5fr);gap:28px;align-items:start;padding:32px 0;border-bottom:1px solid #e5e5e5}.career-row:last-child{border-bottom:0}.career-period{display:flex;flex-direction:column;align-items:flex-start;gap:12px;font-size:13px;color:#666;line-height:1.6}.career-current{display:inline-flex;align-items:center;gap:7px;padding:3px 10px;border:1px solid #e5e5e5;border-radius:999px;font-size:11px;color:#333}.career-current:before{content:'';width:6px;height:6px;background:#12b76a;border-radius:50%}.career-position{display:flex;align-items:flex-start;gap:16px;min-width:0}.career-position h3{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;line-height:1.3;margin:0 0 5px;letter-spacing:-.025em}.career-logo{position:relative;display:flex;align-items:center;justify-content:center;flex:0 0 48px;width:48px;height:48px;border:1px solid #eee;border-radius:8px;color:#777;background:#fafafa;overflow:hidden}.career-logo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:white}.career-logo img[hidden]{display:none}.career-company{font-size:14px;color:#333;line-height:1.6}a.career-company{text-decoration:underline;text-decoration-color:#ddd;text-underline-offset:4px}a.career-company:hover{text-decoration-color:#111}.career-meta{font-size:12px;color:#737373;margin:5px 0 0;line-height:1.5}.career-description{font-size:14px;color:#525252;line-height:1.7;margin:0;min-width:0}
+@media(max-width:1023px){.career-row{grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:18px 24px}.career-description{grid-column:2}}
+@media(max-width:639px){.career-row{grid-template-columns:minmax(0,1fr);gap:16px;padding:26px 0}.career-period{flex-direction:row;flex-wrap:wrap;align-items:center;gap:8px 12px}.career-description{grid-column:1}.career-position h3{font-size:19px}.career-company{display:inline-flex;align-items:center;min-height:32px}.career-position{gap:12px}}
+</style>
+</head>
+<body class="bg-[#FAFAFA] text-[#0A0A0A] font-sans antialiased selection:bg-black selection:text-white relative min-h-screen">
+<!-- BEGIN: MainHeader -->
+<header class="reference-header" data-purpose="site-header">
+<div class="reference-nav">
+<a class="availability" href="#contact"><span></span>Disponible pour vos projets</a>
+<nav id="main-navigation" data-purpose="desktop-nav" aria-label="Navigation principale">
+<a href="#work">Réalisations</a><a href="#services">Services</a><a href="#about">Ma méthode</a><a href="#contact">Contact</a><a href="en/" lang="en" hreflang="en" aria-label="English version">EN</a>
+</nav>
+<button class="mobile-menu-toggle" type="button" aria-expanded="false" aria-controls="main-navigation">Menu <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></button>
+<a class="hero-cta nav-cta" href="#contact">Discutons <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+</div></header>
+<!-- END: MainHeader -->
+<main>
+<!-- BEGIN: HeroSection -->
+<section class="reference-hero" data-purpose="hero-section" aria-labelledby="hero-name">
+<div class="hero-stage">
+<h1 id="hero-name" class="hero-name"><span>LAURENT</span> <strong>BRIEU</strong></h1>
+<div class="hero-portrait"><img src="assets/hero-laurent-brieu.png" alt="Laurent Brieu, de face" fetchpriority="high" decoding="async"></div>
+<div class="hero-copy"><h2>Développeur web<br>freelance</h2><p>Création et refonte de sites web,<br class="desktop-break"> boutiques et plateformes sur mesure.</p><a class="hero-cta" href="#contact">Parlons de votre projet <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a></div>
+<div class="hero-links" aria-label="Réalisations et réseaux sociaux"><a class="hero-pill" href="#work">
+<svg class="w-4 h-4 shrink-0 text-neutral-700 group-hover:text-black" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<rect height="14" rx="2" ry="2" width="20" x="2" y="3"></rect>
+<line x1="8" x2="16" y1="21" y2="21"></line>
+<line x1="12" x2="12" y1="17" y2="21"></line>
+</svg>
+<span>Réalisations</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+</a><a class="hero-pill" href="https://github.com/laurentbrieu" rel="noopener noreferrer" target="_blank">
+<svg class="w-4 h-4 shrink-0 text-neutral-700 group-hover:text-black" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+</svg>
+<span>GitHub</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+</a><a class="hero-pill" href="https://www.linkedin.com/in/laurentbrieu/" rel="noopener noreferrer" target="_blank">
+<svg class="w-4 h-4 shrink-0 text-neutral-700 group-hover:text-black" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<rect height="20" rx="4" width="20" x="2" y="2"></rect>
+<line x1="8" x2="8" y1="11" y2="16"></line>
+<line x1="8" x2="8.01" y1="8" y2="8"></line>
+<line x1="12" x2="12" y1="16" y2="11"></line>
+<path d="M16 16v-3a2 2 0 0 0-4 0"></path>
+</svg>
+<span>LinkedIn</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg>
+</a></div>
+</div></section>
+<!-- END: HeroSection -->
+<!-- BEGIN: MetricTicker -->
+<div class="w-full bg-white border-b border-[#ECECEC] py-4 overflow-hidden select-none" data-purpose="metrics-ticker">
+<div class="animate-marquee items-center gap-12 font-grotesk text-sm font-semibold tracking-wide text-neutral-700 uppercase">
+<span class="flex items-center gap-3"><span>✦</span> DÉVELOPPEUR WEB DEPUIS 2009</span>
+<span class="flex items-center gap-3"><span>✦</span> SITES VITRINES &amp; BOUTIQUES E-COMMERCE</span>
+<span class="flex items-center gap-3"><span>✦</span> EXPERT SYMFONY</span>
+<span class="flex items-center gap-3"><span>✦</span> ACCOMPAGNEMENT &amp; FORMATION LONG TERME</span>
+<span class="flex items-center gap-3"><span>✦</span> À DISTANCE · FRANCE &amp; INTERNATIONAL</span>
+<!-- Duplicate set for seamless looping -->
+<span class="flex items-center gap-3"><span>✦</span> DÉVELOPPEUR WEB DEPUIS 2009</span>
+<span class="flex items-center gap-3"><span>✦</span> SITES VITRINES &amp; BOUTIQUES E-COMMERCE</span>
+<span class="flex items-center gap-3"><span>✦</span> EXPERT SYMFONY</span>
+<span class="flex items-center gap-3"><span>✦</span> ACCOMPAGNEMENT &amp; FORMATION LONG TERME</span>
+<span class="flex items-center gap-3"><span>✦</span> À DISTANCE · FRANCE &amp; INTERNATIONAL</span>
+</div>
+</div>
+<!-- END: MetricTicker -->
+<!-- BEGIN: PhilosophySection -->
+<section class="py-20 lg:py-28 bg-[#FAFAFA] border-b border-[#E8ECEF]" data-purpose="about-philosophy" id="about">
+<div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<div class="lg:col-span-4">
+<span class="text-xs font-mono tracking-widest text-neutral-400 uppercase">01 / APPROCHE &amp; VISION</span>
+<h2 class="text-3xl lg:text-4xl font-grotesk font-bold tracking-tight text-black mt-3">
+              Un développement web sur mesure, robuste et durable.
+            </h2>
+<div class="mt-8 p-6 bg-white rounded-2xl border border-neutral-200/80 shadow-sm">
+<h3 class="font-grotesk font-bold text-sm tracking-tight uppercase flex items-center gap-2 text-black">
+<span>🎯</span> Points Clés &amp; Engagements
+              </h3>
+<ul class="mt-4 space-y-2.5 text-xs lg:text-sm text-neutral-600 font-medium">
+<li class="flex items-start gap-2">
+<span class="text-black font-bold">•</span>
+<span>Création &amp; refonte de sites vitrines et e-commerce</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-black font-bold">•</span>
+<span>Reprise de catalogue &amp; développements sur mesure</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-black font-bold">•</span>
+<span>Formation des clients à la livraison</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-black font-bold">•</span>
+<span>Maintenance &amp; évolutions continues</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="text-black font-bold">•</span>
+<span>Je travaille à distance sur vos projets, en France et à l’international.</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="lg:col-span-8 space-y-8 lg:pl-6 text-neutral-700">
+<p class="text-2xl sm:text-3xl lg:text-4xl font-grotesk font-medium text-black leading-snug tracking-tight">
+              « Développeur web depuis 2009, je réalise des sites et applications web de bout en bout, j'interviens sur l’existant et forme mes clients pour qu’ils soient <span class="underline decoration-neutral-300 underline-offset-4">autonomes au quotidien</span>. »
+            </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-neutral-600 text-sm md:text-base leading-relaxed">
+<p>
+                Je prends en charge la maintenance et les évolutions dans le cadre de <strong class="text-black font-semibold">partenariats réguliers qui durent souvent plusieurs années</strong>. Chaque projet bénéficie d'une attention rigoureuse : code propre, performance, sécurité et adéquation parfaite avec les processus métiers de votre organisation.
+              </p>
+<p>
+                Mon approche privilégie la <strong class="text-black font-semibold">clarté technique, la pérennité et la transmission</strong> : choix de technologies éprouvées (Symfony, PrestaShop, WordPress), documentation soignée et sessions de formation à la livraison pour que vous gardiez le contrôle complet de votre outil.
+              </p>
+</div>
+<!-- Philosophy Badges -->
+<div class="pt-4 flex flex-wrap gap-3">
+<span class="px-4 py-2 bg-neutral-100 text-neutral-800 text-xs font-mono rounded-full border border-neutral-200">PRESTASHOP</span>
+<span class="px-4 py-2 bg-neutral-100 text-neutral-800 text-xs font-mono rounded-full border border-neutral-200">SYMFONY &amp; PHP</span>
+<span class="px-4 py-2 bg-neutral-100 text-neutral-800 text-xs font-mono rounded-full border border-neutral-200">WORDPRESS</span>
+<span class="px-4 py-2 bg-neutral-100 text-neutral-800 text-xs font-mono rounded-full border border-neutral-200">TRANSMISSION &amp; AUTONOMIE</span>
+<span class="px-4 py-2 bg-neutral-100 text-neutral-800 text-xs font-mono rounded-full border border-neutral-200">ACCESSIBILITÉ &amp; PERFORMANCE</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: PhilosophySection -->
+<!-- BEGIN: SelectedWorkSection -->
+<section class="py-20 lg:py-28 bg-white border-b border-[#E8ECEF]" data-purpose="portfolio-work-showcase" id="work">
+<div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between pb-12 border-b border-neutral-200">
+<div>
+<span class="text-xs font-mono tracking-widest text-neutral-400 uppercase">02 / PROJETS SÉLECTIONNÉS</span>
+<h2 class="text-3xl lg:text-5xl font-grotesk font-black tracking-tight text-black mt-2">
+              Réalisations Phares
+            </h2>
+</div>
+<p class="text-neutral-500 text-sm max-w-md mt-4 md:mt-0 font-normal">
+            Boutiques e-commerce créées de zéro, plateformes sur mesure et refontes de catalogues volumineux menées depuis 2009.
+          </p>
+</div>
+<!-- Work Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-12 mt-12">
+<!-- Project 1: Ysé Paris -->
+<article class="group cursor-pointer">
+<div class="w-full aspect-[16/10] bg-[#EEF0F2] rounded-3xl overflow-hidden border border-neutral-200 p-8 flex items-center justify-center relative transition-all duration-300 group-hover:shadow-xl group-hover:border-neutral-400">
+<div class="w-full h-full bg-white rounded-2xl shadow-sm border border-neutral-200/90 p-5 flex flex-col justify-between transform group-hover:scale-[1.02] transition-transform duration-500">
+<div class="flex items-center justify-between border-b border-neutral-100 pb-3">
+<div class="flex items-center gap-2">
+<span class="font-grotesk font-bold text-xs uppercase tracking-wider text-black">YSÉ PARIS</span>
+<span class="text-[10px] font-mono px-2 py-0.5 rounded bg-neutral-100 text-neutral-600">E-COMMERCE</span>
+</div>
+<span class="text-[11px] font-mono text-neutral-400">yse-paris.com</span>
+</div>
+<div class="py-4 space-y-2 text-center my-auto">
+<span class="text-xs font-mono text-neutral-400 uppercase tracking-widest">Boutique en ligne officielle</span>
+<p class="text-lg font-grotesk font-semibold text-neutral-900">Lingerie, maillots de bain &amp; prêt-à-porter</p>
+<p class="text-xs text-neutral-500 font-mono">Boutique développée de zéro sur PrestaShop</p>
+</div>
+<div class="h-14 bg-neutral-900 rounded-xl flex items-center px-4 justify-between text-white text-xs font-grotesk">
+<span>Version historique &amp; architecture initiale</span>
+<span class="font-mono text-emerald-400">PrestaShop</span>
+</div>
+</div>
+</div>
+<div class="mt-5 flex items-start justify-between">
+<div>
+<h3 class="text-xl font-grotesk font-bold text-black group-hover:underline">
+                  Ysé Paris — Création de boutique e-commerce
+                </h3>
+<p class="text-xs text-neutral-500 mt-1">Boutique en ligne de lingerie et de maillots de bain. Développement de zéro de la boutique PrestaShop historique de la marque.</p>
+</div>
+<span class="text-xs font-mono font-medium text-neutral-400 shrink-0 ml-4">2015 — 2021</span>
+</div>
+</article>
+<!-- Project 2: Stokomani -->
+<article class="group cursor-pointer">
+<div class="w-full aspect-[16/10] bg-[#111111] rounded-3xl overflow-hidden border border-neutral-900 p-8 flex items-center justify-center relative transition-all duration-300 group-hover:shadow-xl">
+<div class="w-full h-full bg-neutral-950 rounded-2xl shadow-inner border border-neutral-800 p-5 flex flex-col justify-between text-neutral-200 transform group-hover:scale-[1.02] transition-transform duration-500">
+<div class="flex items-center justify-between border-b border-neutral-800 pb-3">
+<span class="font-grotesk font-bold text-xs tracking-wider uppercase text-neutral-300">STOKOMANI</span>
+<span class="text-[10px] font-mono px-2 py-0.5 rounded bg-neutral-800 text-neutral-300">CATALOGUE VOLUMINEUX</span>
+</div>
+<div class="text-center py-4 my-auto space-y-1">
+<p class="text-xs font-mono text-neutral-400">Refonte visuelle et technique complète</p>
+<p class="text-xl font-grotesk font-bold text-white tracking-tight">Plusieurs milliers de fiches produits</p>
+<p class="text-xs text-neutral-400 font-mono">Migration &amp; scripts d'import de catalogue</p>
+</div>
+<div class="h-12 bg-neutral-900 border border-neutral-700/60 rounded-xl flex items-center justify-between px-4 text-xs font-medium tracking-wide">
+<span>Gestion de catalogue &amp; intégration</span>
+<span class="font-mono text-neutral-300">stokomani.fr</span>
+</div>
+</div>
+</div>
+<div class="mt-5 flex items-start justify-between">
+<div>
+<h3 class="text-xl font-grotesk font-bold text-black group-hover:underline">
+                  Stokomani — Refonte technique &amp; reprise catalogue
+                </h3>
+<p class="text-xs text-neutral-500 mt-1">Enseigne de déstockage majeure. Refonte visuelle et technique complète du site, gestion de catalogue et import de plusieurs milliers de fiches produits.</p>
+</div>
+<span class="text-xs font-mono font-medium text-neutral-400 shrink-0 ml-4">Refonte</span>
+</div>
+</article>
+<!-- Project 3: CotizUp -->
+<article class="group cursor-pointer">
+<div class="w-full aspect-[16/10] bg-[#F2F4F7] rounded-3xl overflow-hidden border border-neutral-200 p-8 flex items-center justify-center relative transition-all duration-300 group-hover:shadow-xl group-hover:border-neutral-400">
+<div class="w-full h-full bg-white rounded-2xl shadow-sm border border-neutral-200/90 p-5 flex flex-col justify-between transform group-hover:scale-[1.02] transition-transform duration-500">
+<div class="flex items-center justify-between border-b border-neutral-100 pb-3">
+<div class="flex items-center gap-2">
+<span class="font-grotesk font-bold text-xs uppercase text-neutral-900">COTIZUP</span>
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+</div>
+<span class="text-[11px] font-mono text-neutral-400">cotizup.com</span>
+</div>
+<div class="space-y-3 py-2">
+<div class="flex justify-between items-center text-xs text-neutral-500">
+<span class="font-medium">Collectes &amp; Dons Récurrents</span>
+<span class="font-mono text-black font-semibold">Mensuels &amp; Ponctuels</span>
+</div>
+<div class="w-full bg-neutral-100 h-2 rounded-full overflow-hidden">
+<div class="bg-black h-full w-4/5"></div>
+</div>
+<div class="text-[11px] font-mono text-neutral-600 bg-neutral-50 p-2.5 rounded-lg border border-neutral-100">
+✦ Reçus fiscaux automatisés &amp; tunnels de paiement
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2 text-[11px] font-mono text-neutral-500 pt-2 border-t border-neutral-100">
+<div>Lead Tech &amp; Symfony</div>
+<div class="text-right">2017 — Présent</div>
+</div>
+</div>
+</div>
+<div class="mt-5 flex items-start justify-between">
+<div>
+<h3 class="text-xl font-grotesk font-bold text-black group-hover:underline">
+                  CotizUp — Développement plateforme sur mesure
+                </h3>
+<p class="text-xs text-neutral-500 mt-1">Plateforme leader de cagnottes en ligne. Développement depuis sa création en 2017 de la majorité des fonctionnalités, dons récurrents et reçus fiscaux automatisés.</p>
+</div>
+<span class="text-xs font-mono font-medium text-neutral-400 shrink-0 ml-4">2017 — Présent</span>
+</div>
+</article>
+<!-- Project 4: Mediapart -->
+<article class="group cursor-pointer">
+<div class="w-full aspect-[16/10] bg-[#E9EBEF] rounded-3xl overflow-hidden border border-neutral-200 p-8 flex items-center justify-center relative transition-all duration-300 group-hover:shadow-xl group-hover:border-neutral-400">
+<div class="w-full h-full bg-white rounded-2xl shadow-sm border border-neutral-200/90 p-5 flex flex-col justify-between transform group-hover:scale-[1.02] transition-transform duration-500">
+<div class="flex items-center justify-between border-b border-neutral-100 pb-2">
+<span class="font-grotesk font-bold text-xs uppercase tracking-wider text-black">MEDIAPART</span>
+<span class="font-mono text-[10px] px-2 py-0.5 bg-neutral-100 rounded text-neutral-700">HAUTE DISPONIBILITÉ</span>
+</div>
+<div class="flex flex-col items-center justify-center py-3 text-center my-auto">
+<div class="w-16 h-16 rounded-full border-2 border-black flex items-center justify-center text-xl font-serif font-black mb-2">
+  M
+</div>
+<p class="text-xs font-mono text-neutral-600">Journal indépendant d'information &amp; d'enquêtes</p>
+<p class="text-[11px] text-neutral-400 font-mono mt-0.5">Site en production à très fort trafic</p>
+</div>
+<div class="text-[11px] text-center text-neutral-600 font-mono border-t border-neutral-100 pt-2 flex justify-between items-center">
+<span>Refonte, maintenance &amp; fonctionnalités</span>
+<span class="font-bold text-black">mediapart.fr</span>
+</div>
+</div>
+</div>
+<div class="mt-5 flex items-start justify-between">
+<div>
+<h3 class="text-xl font-grotesk font-bold text-black group-hover:underline">
+                  Mediapart — Refonte &amp; maintenance site à fort trafic
+                </h3>
+<p class="text-xs text-neutral-500 mt-1">Journal indépendant d'information et d'enquêtes. Intervention sur le site en ligne : refonte, maintenance technique et intégration de nouvelles fonctionnalités.</p>
+</div>
+<span class="text-xs font-mono font-medium text-neutral-400 shrink-0 ml-4">Presse Web</span>
+</div>
+</article>
+</div>
+<!-- Extra references mention bar -->
+<div class="mt-12 p-6 rounded-2xl bg-neutral-50 border border-neutral-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+<div class="text-xs text-neutral-600 font-mono">
+<strong class="text-black">Autres références notables :</strong> MaProFormation (plateforme formation en ligne), Spaurt (santé &amp; abonnements), Nounou Décalée (réservation &amp; paiement atypique), Fédéforma (formation &amp; tutoriels).
+  </div>
+<a class="text-xs font-mono font-bold text-black hover:underline shrink-0 flex items-center gap-1" href="#contact">
+    Discuter d'un besoin similaire <span>↗</span>
+</a>
+</div>
+</div>
+</section>
+<!-- END: SelectedWorkSection -->
+<!-- BEGIN: ServicesSection -->
+<section class="py-20 lg:py-28 bg-[#FAFAFA] border-b border-[#E8ECEF]" data-purpose="services-capabilities" id="services">
+<div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<div class="lg:col-span-4">
+<span class="text-xs font-mono tracking-widest text-neutral-400 uppercase">03 / OFFRES &amp; SERVICES</span>
+<h2 class="text-3xl lg:text-5xl font-grotesk font-black tracking-tight text-black mt-2">
+              Services &amp; Expertise
+            </h2>
+<p class="text-neutral-500 text-sm mt-4 leading-relaxed">
+              Une gamme complète de prestations pour créer, moderniser et pérenniser votre présence en ligne en toute sérénité.
+            </p>
+</div>
+<!-- Services List -->
+<div class="lg:col-span-8 space-y-4">
+<!-- Service item 1 -->
+<div class="p-6 md:p-8 bg-white rounded-2xl border border-neutral-200/90 hover:border-black transition-colors group">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="space-y-1">
+<span class="text-xs font-mono text-neutral-400 font-semibold">01</span>
+<h3 class="text-xl md:text-2xl font-grotesk font-bold text-black group-hover:translate-x-1 transition-transform">
+                    Création de site vitrine &amp; e-commerce
+                  </h3>
+<p class="text-neutral-600 text-sm pt-1">
+                    Création de sites vitrines et de boutiques en ligne sur mesure avec Symfony, ma technologie principale aujourd’hui. Je vous accompagne du cadrage du projet à la mise en ligne.
+                  </p>
+</div>
+<span class="text-sm font-mono text-neutral-400 group-hover:text-black transition-colors shrink-0">Symfony / PHP / WordPress / PrestaShop</span>
+</div>
+</div>
+<!-- Service item 2 -->
+<div class="p-6 md:p-8 bg-white rounded-2xl border border-neutral-200/90 hover:border-black transition-colors group">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="space-y-1">
+<span class="text-xs font-mono text-neutral-400 font-semibold">02</span>
+<h3 class="text-xl md:text-2xl font-grotesk font-bold text-black group-hover:translate-x-1 transition-transform">
+                    Refonte &amp; Reprise technique
+                  </h3>
+<p class="text-neutral-600 text-sm pt-1">
+                    Reprise de sites existants, modernisation de socle obsolète et migration complexe de gros volumes de données ou de catalogues produits.
+                  </p>
+</div>
+<span class="text-sm font-mono text-neutral-400 group-hover:text-black transition-colors shrink-0">Migration &amp; Reprise CMS</span>
+</div>
+</div>
+<!-- Service item 3 -->
+<div class="p-6 md:p-8 bg-white rounded-2xl border border-neutral-200/90 hover:border-black transition-colors group">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="space-y-1">
+<span class="text-xs font-mono text-neutral-400 font-semibold">03</span>
+<h3 class="text-xl md:text-2xl font-grotesk font-bold text-black group-hover:translate-x-1 transition-transform">
+                    Développement sur mesure &amp; Modules
+                  </h3>
+<p class="text-neutral-600 text-sm pt-1">
+                    Je développe des fonctionnalités sur mesure pour votre site ou votre application, selon les besoins de votre activité. Cela peut aller d’un système de réservation ou de paiement à un espace membre avec abonnement, en passant par l’intégration de vos outils et l’automatisation de vos tâches métier.
+                  </p>
+</div>
+<span class="text-sm font-mono text-neutral-400 group-hover:text-black transition-colors shrink-0">Symfony / PHP / APIs</span>
+</div>
+</div>
+<!-- Service item 4 -->
+<div class="p-6 md:p-8 bg-white rounded-2xl border border-neutral-200/90 hover:border-black transition-colors group">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="space-y-1">
+<span class="text-xs font-mono text-neutral-400 font-semibold">04</span>
+<h3 class="text-xl md:text-2xl font-grotesk font-bold text-black group-hover:translate-x-1 transition-transform">
+                    Formation, Maintenance &amp; Suivi
+                  </h3>
+<p class="text-neutral-600 text-sm pt-1">
+                    Formation personnalisée à l'administration du site pour vous rendre 100% autonome, complétée par un suivi technique et des mises à jour continues.
+                  </p>
+</div>
+<span class="text-sm font-mono text-neutral-400 group-hover:text-black transition-colors shrink-0">Accompagnement pérenne</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: ServicesSection -->
+<!-- BEGIN: ExperienceSection -->
+<section class="py-20 lg:py-28 bg-white border-b border-[#E8ECEF]" data-purpose="career-history" id="experience" aria-labelledby="career-heading">
+<div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between pb-12 border-b border-neutral-200"><div><span class="text-xs font-mono tracking-widest text-neutral-400 uppercase">04 / PARCOURS PROFESSIONNEL</span><h2 id="career-heading" class="text-3xl lg:text-5xl font-grotesk font-black tracking-tight text-black mt-2">Mon parcours</h2></div><span class="text-xs font-mono text-neutral-400 mt-2 md:mt-0 uppercase">Du développement web à la direction technique</span></div>
+<ol class="career-list"><!-- CotizUp: description proposée, à ajuster si nécessaire. -->
+<li class="career-row">
+<div class="career-period"><span>Oct. 2022 — aujourd’hui</span><span class="career-current">Aujourd’hui</span></div>
+<div class="career-position"><span class="career-logo" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V3h8v4M3 12h18M10 12v3h4v-3"/></svg><img src="https://media.licdn.com/dms/image/v2/D4D0BAQF2aPt8bVdnCQ/company-logo_100_100/B4DZ62fULmIEAI-/0/1781178123286/cotizup_logo?e=1796256000&amp;v=beta&amp;t=XNwxV3DO4t9iVEP4eQ5BDfAld0xXe7CGFZe-bwjOcJ8" alt="" width="48" height="48" loading="lazy" referrerpolicy="no-referrer" onerror="this.hidden=true"></span><div><h3>Head of Technology</h3><a class="career-company" href="https://www.linkedin.com/company/25999925/" target="_blank" rel="noopener noreferrer">CotizUp</a><p class="career-meta">CDI · À distance</p></div></div>
+<p class="career-description">Pilotage technique et évolution de la plateforme de cagnottes en ligne. Architecture, développement des fonctionnalités de dons et accompagnement de l’équipe technique.</p>
+</li>
+<li class="career-row" id="career-freelance">
+  <div class="career-period"><span>Depuis <time datetime="2009">2009</time></span><span class="career-current">Aujourd’hui</span></div>
+  <div class="career-position">
+    <span class="career-logo" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V3h8v4M3 12h18M10 12v3h4v-3"/></svg></span>
+    <div>
+      <h3>Développeur web freelance</h3>
+      <span class="career-company">À mon compte</span>
+      <p class="career-meta">À distance, en France et à l’international</p>
+    </div>
+  </div>
+  <p class="career-description">En parallèle de mes postes en entreprise, j’ai réalisé des sites de tous types : sites vitrines, boutiques en ligne, plateformes et applications web sur mesure. J’interviens aussi sur des sites existants pour les refondre, les faire évoluer et assurer leur maintenance.</p>
+</li>
+<!-- KNP Labs: description proposée, à ajuster si nécessaire. -->
+<li class="career-row">
+<div class="career-period"><span>Janv. 2014 — oct. 2022</span></div>
+<div class="career-position"><span class="career-logo" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V3h8v4M3 12h18M10 12v3h4v-3"/></svg><img src="https://media.licdn.com/dms/image/v2/D4E0BAQF9zGbh8XRqpw/company-logo_100_100/company-logo_100_100/0/1738579940852/knplabs_logo?e=1796256000&amp;v=beta&amp;t=i3vGbCirRnj9vFJ1AVewkLt2iqD3m-BbDW527rh3EIA" alt="" width="48" height="48" loading="lazy" referrerpolicy="no-referrer" onerror="this.hidden=true"></span><div><h3>Développeur back-end</h3><a class="career-company" href="https://www.linkedin.com/company/1787536/" target="_blank" rel="noopener noreferrer">KNP Labs</a><p class="career-meta">Paris et périphérie</p></div></div>
+<p class="career-description">Développement back-end d’applications web avec PHP et Symfony. Création de fonctionnalités métier, maintenance et évolution de projets clients au sein des équipes de développement.</p>
+</li>
+<!-- Shiva Communication: description proposée, à ajuster si nécessaire. -->
+<li class="career-row">
+<div class="career-period"><span>Oct. 2012 — déc. 2013</span></div>
+<div class="career-position"><span class="career-logo" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V3h8v4M3 12h18M10 12v3h4v-3"/></svg><img src="https://media.licdn.com/dms/image/v2/C4E0BAQH_4IAni5yUgA/company-logo_100_100/company-logo_100_100/0/1634601434923/shiva_communication_logo?e=1796256000&amp;v=beta&amp;t=OY4uU9D3NJmHjJle6FNAk9b4_F2E8s5yv-KvhbXeQOQ" alt="" width="48" height="48" loading="lazy" referrerpolicy="no-referrer" onerror="this.hidden=true"></span><div><h3>Développeur Web</h3><a class="career-company" href="https://www.linkedin.com/company/122916/" target="_blank" rel="noopener noreferrer">Shiva Communication</a><p class="career-meta">Clichy</p></div></div>
+<p class="career-description">Développement de sites web pour les clients de l’agence. Intégration des interfaces, réalisation de fonctionnalités et suivi des évolutions jusqu’à la mise en ligne.</p>
+</li>
+<!-- PrestaShop: description proposée, à ajuster si nécessaire. -->
+<li class="career-row">
+<div class="career-period"><span>Janv. 2011 — août 2012</span></div>
+<div class="career-position"><span class="career-logo" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V3h8v4M3 12h18M10 12v3h4v-3"/></svg><img src="https://media.licdn.com/dms/image/v2/D4E0BAQFGYd1g5jZjOg/company-logo_100_100/company-logo_100_100/0/1683211322895/prestashop_logo?e=1796256000&amp;v=beta&amp;t=uJLz_BroGvb5Ee-4ibHGfUcrOatg5KjfQbwLrRe9ewE" alt="" width="48" height="48" loading="lazy" referrerpolicy="no-referrer" onerror="this.hidden=true"></span><div><h3>Développeur Web</h3><a class="career-company" href="https://www.linkedin.com/company/489118/" target="_blank" rel="noopener noreferrer">PrestaShop</a><p class="career-meta">Paris et périphérie</p></div></div>
+<p class="career-description">Développement et maintenance de sites e-commerce et de modules PrestaShop. Résolution de problèmes techniques et accompagnement des utilisateurs de la plateforme.</p>
+</li>
+<!-- Ad Interactive: description proposée, à ajuster si nécessaire. -->
+<li class="career-row">
+<div class="career-period"><span>Janv. 2010 — janv. 2011</span></div>
+<div class="career-position"><span class="career-logo" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V3h8v4M3 12h18M10 12v3h4v-3"/></svg></span><div><h3>Développeur Web</h3><a class="career-company" href="https://www.linkedin.com/company/150614/" target="_blank" rel="noopener noreferrer">Ad Interactive</a><p class="career-meta">Paris</p></div></div>
+<p class="career-description">Réalisation de sites web et de fonctionnalités pour les projets de l’agence. Intégration, développement et maintenance des sites livrés aux clients.</p>
+</li>
+<!-- Les Astronautes Production: description proposée, à ajuster si nécessaire. -->
+<li class="career-row">
+<div class="career-period"><span>Sept. 2008 — oct. 2009</span></div>
+<div class="career-position"><span class="career-logo" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V3h8v4M3 12h18M10 12v3h4v-3"/></svg></span><div><h3>Développeur Web</h3><span class="career-company">Les Astronautes Production</span><p class="career-meta">Courbevoie</p></div></div>
+<p class="career-description">Participation à la réalisation de projets web : intégration des pages, développement de fonctionnalités et mises à jour des sites.</p>
+</li>
+<!-- IBM: description proposée, à ajuster si nécessaire. -->
+<li class="career-row">
+<div class="career-period"><span>Sept. 2008 — mars 2009</span></div>
+<div class="career-position"><span class="career-logo" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V3h8v4M3 12h18M10 12v3h4v-3"/></svg><img src="https://media.licdn.com/dms/image/v2/D560BAQGiz5ecgpCtkA/company-logo_100_100/company-logo_100_100/0/1688684715866/ibm_logo?e=1796256000&amp;v=beta&amp;t=niBA4MNKG5w-Qs9DWOmcJB_Qwef5DRzml2eGFbyTKe0" alt="" width="48" height="48" loading="lazy" referrerpolicy="no-referrer" onerror="this.hidden=true"></span><div><h3>Développeur Web</h3><a class="career-company" href="https://www.linkedin.com/company/1009/" target="_blank" rel="noopener noreferrer">IBM</a></div></div>
+<p class="career-description">Développement d’une application de suivi du retour sur investissement des projets, pour consulter les indicateurs et suivre leur évolution.</p>
+</li>
+<!-- Sagem Défense Sécurité: description proposée, à ajuster si nécessaire. -->
+<li class="career-row">
+<div class="career-period"><span>Mai 2007 — sept. 2007</span></div>
+<div class="career-position"><span class="career-logo" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V3h8v4M3 12h18M10 12v3h4v-3"/></svg></span><div><h3>Développeur Web</h3><span class="career-company">Sagem Défense Sécurité</span></div></div>
+<p class="career-description">Développement d’applications intranet dédiées au suivi de projet, pour centraliser les informations et faciliter le suivi de l’avancement.</p>
+</li></ol>
+</div></section>
+<!-- END: ExperienceSection -->
+<!-- BEGIN: CallToActionFooterSection -->
+<section class="pt-24 pb-16 bg-[#0A0A0A] text-white" data-purpose="contact-and-collab" id="contact">
+<div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+<div class="max-w-4xl mx-auto text-center space-y-8">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-900 border border-neutral-800 text-xs font-mono uppercase tracking-widest text-neutral-400">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            Disponible pour nouveaux projets
+          </div>
+<h2 class="text-3xl sm:text-5xl lg:text-7xl font-grotesk font-black tracking-tighter leading-none">
+            Parlons de votre projet de création ou de refonte web.
+          </h2>
+<p class="text-neutral-400 text-base sm:text-lg max-w-2xl mx-auto font-normal">
+            Que vous ayez besoin d'un nouveau site vitrine, d'une boutique en ligne, d'une reprise de catalogue ou d'un développement spécifique, discutons de vos objectifs.
+          </p>
+<div class="pt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
+<a class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-white text-black hover:bg-neutral-200 text-sm font-semibold px-8 py-4 rounded-full transition-all duration-200" href="mailto:laurentbrieu@gmail.com">
+<span>Envoyer une demande par email ↗</span>
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</a>
+<a class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-neutral-900 hover:bg-neutral-800 text-white text-sm font-medium px-8 py-4 rounded-full border border-neutral-800 transition-colors" href="https://www.linkedin.com/in/laurentbrieu/" rel="noopener noreferrer" target="_blank">
+<span>Profil LinkedIn (Laurent Brieu) ↗</span>
+</a>
+</div>
+</div>
+<!-- Footer Bottom Links -->
+<div class="mt-24 pt-8 border-t border-neutral-900 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-neutral-500 font-mono">
+<div>
+            © 2025 LAURENT BRIEU. DÉVELOPPEUR WEB FREELANCE. TOUS DROITS RÉSERVÉS.
+          </div>
+<div class="flex items-center gap-6">
+<a class="hover:text-white transition-colors" href="https://www.linkedin.com/in/laurentbrieu/" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+<a class="hover:text-white transition-colors" href="https://github.com/laurentbrieu" rel="noopener noreferrer" target="_blank">GitHub</a>
+</div>
+<div>
+            <span style="display:inline-flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap">CONÇU avec <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" role="img" aria-label="amour" style="flex-shrink:0"><path d="M12 21s-9-5.6-9-12a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 6.4-9 12-9 12Z"/></svg> à Cergy-Pontoise</span>
+          </div>
+</div>
+</div>
+</section>
+<!-- END: CallToActionFooterSection -->
+</main>
+<script data-purpose="responsive-navigation">
+  const menuButton = document.querySelector('.mobile-menu-toggle');
+  const navigation = document.getElementById('main-navigation');
+  function closeMenu() {
+    navigation.classList.remove('is-open');
+    menuButton.setAttribute('aria-expanded', 'false');
+  }
+  menuButton.addEventListener('click', () => {
+    const open = menuButton.getAttribute('aria-expanded') !== 'true';
+    navigation.classList.toggle('is-open', open);
+    menuButton.setAttribute('aria-expanded', String(open));
+  });
+  navigation.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && navigation.classList.contains('is-open')) {
+      closeMenu();
+      menuButton.focus();
+    }
+  });
+  document.addEventListener('click', event => {
+    if (!event.target.closest('[data-purpose="site-header"]')) closeMenu();
+  });
+  window.matchMedia('(min-width: 768px)').addEventListener('change', closeMenu);
+</script>
+</body></html>
