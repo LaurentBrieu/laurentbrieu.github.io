@@ -35,6 +35,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfilePage","inLanguage":"fr","url":"https://laurentbrieu.github.io/","mainEntity":{"@type":"Person","@id":"https://laurentbrieu.github.io/#laurent-brieu","name":"Laurent Brieu","url":"https://laurentbrieu.github.io/","image":"https://laurentbrieu.github.io/assets/social-portrait.jpg","jobTitle":"Développeur Symfony freelance","knowsAbout":["Symfony","PHP","Web development","PrestaShop","WordPress"],"sameAs":["https://www.linkedin.com/in/laurentbrieu/","https://github.com/LaurentBrieu"]}}</script>
 <link rel="stylesheet" href="assets/refinements.css?v=logos">
+<link rel="stylesheet" href="assets/audience.css">
 </head>
 <body class="bg-[#FAFAFA] text-[#0A0A0A] font-sans antialiased selection:bg-black selection:text-white relative min-h-screen">
 <!-- BEGIN: MainHeader -->
@@ -296,6 +297,7 @@
 </div>
 <div>
             <span>Con&ccedil;u avec amour &agrave; Cergy-Pontoise</span>
+            <button type="button" class="audience-preferences" id="audience-preferences" aria-expanded="false" aria-controls="audience-consent" hidden>Préférences de mesure d’audience</button>
           </div>
 </div>
 </div>
@@ -326,4 +328,13 @@
   });
   window.matchMedia('(min-width: 768px)').addEventListener('change', closeMenu);
 </script>
+<section class="audience-consent" id="audience-consent" aria-labelledby="audience-title" hidden>
+  <h2 id="audience-title">Mesure d’audience</h2>
+  <p>Si vous acceptez, Google Analytics utilise des cookies pour mesurer les visites et leur provenance. Vous pouvez modifier votre choix à tout moment en bas de page. <a href="https://policies.google.com/technologies/partner-sites?hl=fr">Utilisation des données par Google</a>.</p>
+  <div class="audience-consent-actions">
+    <button type="button" data-refuse>Refuser</button>
+    <button type="button" data-accept>Accepter</button>
+  </div>
+</section>
+<script src="assets/audience.js" defer></script>
 </body></html>
