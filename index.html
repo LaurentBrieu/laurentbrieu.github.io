@@ -284,6 +284,9 @@ a:focus-visible, button:focus-visible { outline: 2px solid #059669; outline-offs
 .hero-name>span{color:transparent;-webkit-text-stroke:2px #111}.hero-name strong{font-weight:800;color:#111}
 .hero-portrait{position:absolute;bottom:0;left:24.8%;width:52.4%;aspect-ratio:79/58;overflow:hidden;z-index:1;}
 .hero-portrait img{display:block;width:100%;height:100%;object-fit:contain;object-position:center bottom}
+.hero-portrait img{filter:grayscale(1);transition:filter .6s ease}
+@media(hover:hover){.hero-portrait:hover img{filter:grayscale(0)}}
+@media(prefers-reduced-motion:reduce){.hero-portrait img{transition:none}}
 .hero-copy{position:absolute;left:6.8%;bottom:12.5%;z-index:2;width:28%;font-family:Inter,Arial,sans-serif}
 .hero-copy h2{font-size:clamp(23px,2.6vw,37px);font-weight:700;letter-spacing:-.045em;line-height:1.03;margin:0 0 18px}
 .hero-copy p{font-size:clamp(13px,1.42vw,20px);line-height:1.4;letter-spacing:-.025em;margin:0 0 18px}
