@@ -1,3 +1,33 @@
+.home-content {
+  --section-gutter: 48px;
+}
+
+.home-content > .reference-hero[data-purpose="hero-section"],
+.home-content > :is(.site-stats, #services, .clients-band, .practice-section, .work-preview) {
+  border-bottom: 0;
+}
+
+.home-content > :is(.site-stats, #services, .clients-band, .practice-section, .work-preview, #contact) {
+  position: relative;
+}
+
+.home-content > :is(.site-stats, #services, .clients-band, .practice-section, .work-preview, #contact)::before {
+  content: "";
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline: max(var(--section-gutter), calc((100% - 1440px) / 2 + var(--section-gutter)));
+  border-top: 1px solid var(--line);
+  pointer-events: none;
+}
+
+.home-content > #contact::before {
+  border-color: #333;
+}
+
+@media (max-width: 767px) {
+  .home-content { --section-gutter: 24px; }
+}
+
 .site-stats,
 .portfolio-intro,
 .work-preview {
