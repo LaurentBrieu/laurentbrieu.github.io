@@ -31,7 +31,7 @@ if (workLanguageLink) {
 
   function linkToTranslatedProject() {
     const target = document.getElementById(location.hash.slice(1));
-    const isProject = target?.matches('.portfolio-project, .reference-list li');
+    const isProject = target?.matches('.reference-list > li');
     workLanguageLink.href = translatedPage + (isProject ? location.hash : '');
   }
 

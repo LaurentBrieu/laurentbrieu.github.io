@@ -1,0 +1,67 @@
+.booking-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.booking-page {
+  flex: 1;
+}
+
+.booking-intro {
+  padding-block-end: clamp(24px, 4vw, 48px);
+}
+
+.booking-intro h1 {
+  font-size: clamp(44px, 8vw, 104px);
+}
+
+.booking-reservation {
+  max-width: 1440px;
+  margin-inline: auto;
+  padding: 0 48px clamp(48px, 8vw, 96px);
+  scroll-margin-top: 110px;
+}
+
+.booking-widget {
+  height: 720px;
+}
+
+.booking-fallback {
+  padding: clamp(20px, 4vw, 36px);
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--secondary);
+  line-height: 1.6;
+}
+
+.booking-footer {
+  background: #0a0a0a;
+  color: #fff;
+}
+
+.booking-footer-content {
+  max-width: 1440px;
+  margin-inline: auto;
+  padding: 32px 48px;
+}
+
+@media (max-width: 767px) {
+  .booking-reservation,
+  .booking-footer-content {
+    padding-inline: 24px;
+  }
+
+  .booking-reservation {
+    scroll-margin-top: 80px;
+  }
+
+  .booking-widget {
+    width: min(100vw, max(100%, 320px));
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
