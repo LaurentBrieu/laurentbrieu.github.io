@@ -1,0 +1,68 @@
+<!doctype html>
+<html class="scroll-smooth" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Book a call with Laurent Brieu to discuss building or redesigning your website.">
+  <title>Book a call — Laurent Brieu</title>
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="canonical" href="https://laurentbrieu.github.io/en/book-a-call/">
+  <link rel="alternate" hreflang="fr" href="https://laurentbrieu.github.io/rendez-vous/">
+  <link rel="alternate" hreflang="en" href="https://laurentbrieu.github.io/en/book-a-call/">
+  <link rel="alternate" hreflang="x-default" href="https://laurentbrieu.github.io/rendez-vous/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="../../assets/site-v2.css">
+  <link rel="stylesheet" href="../../assets/refinements.css?v=logos">
+  <link rel="stylesheet" href="../../assets/portfolio.css">
+  <link rel="stylesheet" href="../../assets/rendez-vous.css">
+  <link rel="stylesheet" href="../../assets/audience.css">
+</head>
+<body class="booking-layout">
+  <header class="reference-header" data-purpose="site-header">
+    <div class="reference-nav">
+      <a class="availability" href="../#contact"><span></span>Available for new projects</a>
+      <nav id="main-navigation" data-purpose="desktop-nav" aria-label="Main navigation">
+        <a href="../">Home</a><a href="../work/">Work</a><a href="../#services">Services</a><a href="../#about">How I work</a><a href="../#contact">Contact</a><a href="../../rendez-vous/" lang="fr" hreflang="fr" aria-label="Version française">FR</a>
+      </nav>
+      <button class="mobile-menu-toggle" type="button" aria-expanded="false" aria-controls="main-navigation">Menu <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></button>
+      <a class="hero-cta nav-cta" href="#reservation">Book a call <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+    </div>
+  </header>
+
+  <main class="booking-page">
+    <section class="portfolio-intro booking-intro" aria-labelledby="booking-title">
+      <h1 id="booking-title">Book a call</h1>
+    </section>
+
+    <section class="booking-reservation" id="reservation" aria-label="Booking calendar">
+      <div class="booking-widget" id="calendly-widget" data-frame-title="Book a call with Laurent Brieu on Calendly" hidden></div>
+      <p class="booking-fallback" id="calendly-fallback" role="status" hidden>The calendar is temporarily unavailable.</p>
+    </section>
+  </main>
+
+  <footer class="booking-footer" data-purpose="contact-and-collab">
+    <div class="booking-footer-content flex flex-wrap items-center justify-between gap-6 text-xs text-neutral-400 font-mono">
+      <div>© Laurent Brieu · Freelance web developer</div>
+      <div class="flex items-center gap-6">
+        <a class="hover:text-white transition-colors" href="https://www.linkedin.com/in/laurentbrieu/" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+        <a class="hover:text-white transition-colors" href="https://github.com/laurentbrieu" rel="noopener noreferrer" target="_blank">GitHub</a>
+      </div>
+      <button type="button" class="audience-preferences" id="audience-preferences" aria-expanded="false" aria-controls="audience-consent" hidden>Audience measurement preferences</button>
+    </div>
+  </footer>
+
+  <section class="audience-consent" id="audience-consent" aria-labelledby="audience-title" hidden>
+    <h2 id="audience-title">Audience measurement</h2>
+    <p>If you accept, Google Analytics uses cookies to measure visits and where they come from. You can change your choice at any time at the bottom of the page. <a href="https://policies.google.com/technologies/partner-sites?hl=en">How Google uses data</a>.</p>
+    <div class="audience-consent-actions">
+      <button type="button" data-refuse>Decline</button>
+      <button type="button" data-accept>Accept</button>
+    </div>
+  </section>
+  <script src="../../assets/navigation.js" defer></script>
+  <script src="../../assets/audience.js" defer></script>
+  <script src="../../assets/rendez-vous.js" defer></script>
+</body>
+</html>
