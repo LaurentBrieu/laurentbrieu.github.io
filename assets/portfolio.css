@@ -1,0 +1,111 @@
+.site-stats,
+.portfolio-intro,
+.work-preview {
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: 48px;
+}
+
+.site-stats {
+  display: grid;
+  list-style: none;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding-block: 32px;
+  border-bottom: 1px solid var(--line);
+  text-align: center;
+}
+
+.site-stats > * { padding-inline: clamp(16px, 4vw, 56px); }
+.site-stats > * + * { border-inline-start: 1px solid var(--line); }
+.site-stats .stats-number { display: block;
+  font: 400 clamp(42px, 5vw, 76px)/1 'Space Grotesk', Arial, sans-serif;
+  letter-spacing: -.065em;
+}
+.site-stats .stats-number sup { font-size: .55em; vertical-align: baseline; }
+.site-stats .stats-label { display: block; margin: 8px 0 0; color: var(--secondary); font-size: 14px; }
+
+.reference-header nav a[aria-current="page"],
+.portfolio-link {
+  text-decoration: underline;
+  text-underline-offset: .3em;
+}
+.portfolio-link { display: inline-flex; align-items: center; gap: .5em; min-height: 44px; font-size: 14px; font-weight: 600; }
+.portfolio-link:hover { text-decoration-thickness: 2px; }
+.portfolio-link span { transition: transform .18s ease; }
+.portfolio-link:hover span { transform: translate(2px, -2px); }
+
+.practice-steps { list-style: none; margin: 0; padding: 0; }
+.practice-steps li { padding-block: 20px; border-top: 1px solid var(--line); }
+.practice-steps li:first-child { padding-top: 0; border-top: 0; }
+.practice-steps h3 { color: var(--ink); font: 500 22px/1.2 'Space Grotesk', Arial, sans-serif; margin-bottom: 8px; }
+.practice-steps p { max-width: 56ch; }
+
+.work-preview {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  align-items: center;
+  gap: 48px 80px;
+  padding-block: 72px;
+  border-bottom: 1px solid var(--line);
+}
+.work-preview h2 { font: 500 clamp(28px, 3vw, 42px)/1.12 'Space Grotesk', Arial, sans-serif; letter-spacing: -.04em; }
+.work-preview p { margin-block: 14px 10px; max-width: 42ch; color: var(--secondary); line-height: 1.65; }
+.work-preview ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; list-style: none; margin: 0; padding: 0; }
+.work-preview li { display: grid; place-items: center; min-height: 80px; padding: 12px; border: 1px solid var(--line); background: #fff; }
+.work-preview img { width: auto; height: auto; max-width: min(100%, 126px); max-height: 42px; object-fit: contain; }
+
+.portfolio-intro { padding-block: clamp(44px, 7vw, 100px) clamp(32px, 5vw, 70px); }
+.portfolio-intro h1 {
+  font: 500 clamp(48px, 9vw, 124px)/1.02 'Space Grotesk', Arial, sans-serif;
+  letter-spacing: -.07em;
+  margin-block: 16px 20px;
+  overflow-wrap: anywhere;
+}
+.portfolio-intro p { max-width: 58ch; color: var(--secondary); font-size: clamp(16px, 2vw, 20px); line-height: 1.55; margin-bottom: 14px; }
+.portfolio-catalogue { max-width: 1440px; margin-inline: auto; padding: 0 48px 72px; }
+.portfolio-catalogue h2 { font: 500 clamp(25px, 3vw, 40px)/1.15 'Space Grotesk', Arial, sans-serif; letter-spacing: -.035em; margin-bottom: 24px; }
+.project-index { list-style: none; margin: 24px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0 20px; }
+.project-index a { display: inline-flex; align-items: center; min-height: 44px; font-size: 14px; text-decoration: underline; text-underline-offset: .3em; }
+.portfolio-projects { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 56px; }
+.portfolio-project { padding: 24px 0 8px; border-top: 1px solid var(--line); scroll-margin-top: 130px; }
+.portfolio-project:target,
+.reference-list li:target { border-top-color: var(--ink); }
+.portfolio-project h3 { font: 500 clamp(25px, 3vw, 38px)/1.15 'Space Grotesk', Arial, sans-serif; letter-spacing: -.035em; margin-block: 8px 12px; }
+.portfolio-project h3 a:hover { text-decoration: underline; text-underline-offset: .18em; }
+.portfolio-project .project-brand { display: flex; align-items: center; min-height: 72px; margin: 16px 0; }
+.portfolio-project .project-brand img { max-width: min(72%, 170px); max-height: 62px; }
+.portfolio-project dl { margin: 0; }
+.portfolio-project dt { font-weight: 600; font-size: 14px; }
+.portfolio-project dd { color: var(--secondary); font-size: 15px; line-height: 1.65; margin: 4px 0 12px; }
+.other-references { margin-top: 56px; }
+.reference-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 24px; }
+.reference-list li { position: relative; padding: 16px 0; border-top: 1px solid var(--line); min-width: 0; }
+.reference-list li[id] { scroll-margin-top: 130px; }
+.reference-logo { display: flex; align-items: center; height: 64px; margin-bottom: 12px; }
+.reference-logo img { display: block; width: auto; height: auto; max-width: min(100%, 168px); max-height: 52px; }
+.reference-name { display: block; font-size: 15px; font-weight: 600; overflow-wrap: anywhere; }
+.reference-list a.reference-name { text-decoration: underline; text-underline-offset: .2em; }
+.reference-type { display: block; margin-top: 6px; color: var(--secondary); font-size: 13px; line-height: 1.4; }
+
+@media (min-width: 1024px) {
+  .portfolio-projects { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+}
+
+@media (max-width: 767px) {
+  .site-stats, .portfolio-intro, .work-preview, .portfolio-catalogue { padding-inline: 24px; }
+  .site-stats { padding-block: 24px; }
+  .site-stats > * { padding-inline: clamp(8px, 2.75vw, 18px); }
+  .site-stats .stats-number { font-size: clamp(32px, 9vw, 48px); }
+  .site-stats .stats-label { font-size: 12px; line-height: 1.4; }
+  .work-preview { grid-template-columns: 1fr; padding-block: 48px; gap: 20px; }
+  .portfolio-projects { grid-template-columns: 1fr; gap: 24px; }
+  .portfolio-project,
+  .reference-list li[id] { scroll-margin-top: 92px; }
+  .reference-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 16px; }
+  .reference-logo { height: 54px; margin-bottom: 8px; }
+  .reference-logo img { max-height: 44px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-link span { transition: none; }
+}
